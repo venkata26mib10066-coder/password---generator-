@@ -18,29 +18,8 @@ A simple Python project that generates random and secure passwords based on the 
 3. Open the project folder in a terminal.
 4. Run the following command:
 ```bash
-===== PASSWORD GENERATOR =====
-
-Enter password length: 10
-
-Choose character types:
-1. Uppercase letters
-2. Lowercase letters
-3. Numbers
-4. Special characters
-
-Enter your choices (example: 1234): 1234
-
-Your generated password is:
-A7@kP2!xQ9
-project purpose
-This project created to practice basic concepts such as :
-variables
-input and output
-conditional statements
-Loops
-Strings
-Modules
-Random password generator
+##screeshot
+![Password Generator Output](IMG-20260928-WA0026.jpg)
 
 
 
