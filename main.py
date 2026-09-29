@@ -1,39 +1,75 @@
-import random
-import string
+from generator import generate_password
+from validator import validate_length
+from strength_checker import check_strength
+from user_input import get_password_length, get_yes_no
+from utils import display_banner, display_password
 
-print("===== PASSWORD GENERATOR =====")
 
-length = int(input("Enter password length: "))
+def main():
+    display_banner()
 
-print("\nChoose character types:")
-print("1. Uppercase letters")
-print("2. Lowercase letters")
-print("3. Numbers")
-print("4. Special characters")
+    while True:
 
-choice = input("Enter your choices (example: 1234): ")
+        # Get and validate password length
+        length = get_password_length()
 
-characters = ""
+        valid, message = validate_length(length)
 
-if "1" in choice:
-    characters += string.ascii_uppercase
+        if not valid:
+            print(message)
+            continue
 
-if "2" in choice:
-    characters += string.ascii_lowercase
+        # Get character choices
+        use_uppercase = get_yes_no(
+            "Include uppercase letters? (y/n): "
+        )
 
-if "3" in choice:
-    characters += string.digits
+        use_lowercase = get_yes_no(
+            "Include lowercase letters? (y/n): "
+        )
 
-if "4" in choice:
-    characters += string.punctuation
+        use_numbers = get_yes_no(
+            "Include numbers? (y/n): "
+        )
 
-if characters == "":
-    print("Please select at least one character type.")
-else:
-    password = ""
+        use_special = get_yes_no(
+            "Include special characters? (y/n): "
+        )
 
-    for i in range(length):
-        password += random.choice(characters)
+        # Check if at least one option is selected
+        if not any([
+            use_uppercase,
+            use_lowercase,
+            use_numbers,
+            use_special
+        ]):
+            print("Please select at least one character type.")
+            continue
 
-    print("\nYour generated password is:")
-    print(password) 
+        # Generate password
+        password = generate_password(
+            length,
+            use_uppercase,
+            use_lowercase,
+            use_numbers,
+            use_special
+        )
+
+        # Display password
+        display_password(password)
+
+        # Check password strength
+        print("Password Strength:", check_strength(password))
+
+        # Ask to generate another password
+        again = get_yes_no(
+            "Generate another password? (y/n): "
+        )
+
+        if not again:
+            print("Thank you for using the Password Generator!")
+            break
+
+
+if __name__ == "__main__":
+    main()
