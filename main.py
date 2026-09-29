@@ -26,6 +26,7 @@ def main():
 
         use_lowercase = get_yes_no(
             "Include lowercase letters? (y/n): "
+
         )
 
         use_numbers = get_yes_no(
