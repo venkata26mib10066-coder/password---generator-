@@ -25,3 +25,4 @@ def generate_password(length, use_uppercase, use_lowercase,
         password += random.choice(characters)
 
     return password
+
