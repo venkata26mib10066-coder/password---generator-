@@ -23,7 +23,6 @@ A simple Python project that generates random and secure passwords based on the 
 4. Run `main.py`.
 
 ## Project Output
-
 ![Password Generator Output](IMG-20260928-WA0026.jpg)
 
 
